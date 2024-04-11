@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Golden Thought Generator</title>
+    <style>
+        body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #333;
+  color: #fff;
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 50px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px #444;
+}
+
+p {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+button {
+  font-size: 24px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid #ffd700;
+  border-radius: 5px;
+  color: #ffd700;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #ffd700;
+  color: #333;
+  transform: scale(1.05);
+}
+
+.thought-container {
+  padding-left: 8px;
+  padding-right: 8px;
+  display: none;
+  font-size: 28px;
+  margin-top: 20px;
+  text-shadow: 1px 1px 2px #444;
+  border: 2px solid #ffd700;
+  border-radius: 5px;
+}
+
+#thought {
+  font-style: italic;
+  margin-bottom: -10px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Golden Thought Generator</h1>
+      <p>Click the button to generate a random golden thought.</p>
+      <button id="generate-btn">Generate</button>
+      <div class="thought-container">
+        <p id="thought"></p>
+        <p id="author"></p>
+      </div>
+    </div>
+    <script>
+        const thoughts = [
+  {
+    quote: "Believe you can and you're halfway there.",
+    author: "Theodore Roosevelt"
+  },
+  {
+    quote: "You miss 100% of the shots you don't take.",
+    author: "Wayne Gretzky"
+  },
+  {
+    quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    author: "Winston Churchill"
+  },
+  {
+    quote: "If you want to live a happy life, tie it to a goal, not to people or things.",
+    author: "Albert Einstein"
+  },
+  {
+    quote: "The only way to do great work is to love what you do.",
+    author: "Steve Jobs"
+  },
+  {
+    quote: "Happiness is not something ready made. It comes from your own actions.",
+    author: "Dalai Lama"
+  },
+{
+    quote: "Believe you can and you're halfway there.",
+    author: "Theodore Roosevelt"
+},
+{
+    quote: "You miss 100% of the shots you don't take.",
+    author: "Wayne Gretzky"
+},
+{
+    quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    author: "Winston Churchill"
+},
+{
+    quote: "If you want to live a happy life, tie it to a goal, not to people or things.",
+    author: "Albert Einstein"
+},
+{
+    quote: "The only way to do great work is to love what you do.",
+    author: "Steve Jobs"
+},
+{
+    quote: "Happiness is not something ready made. It comes from your own actions.",
+    author: "Dalai Lama"
+},
+{
+    quote: "The best way to predict the future is to invent it.",
+    author: "Alan Kay"
+},
+{
+    quote: "Don't watch the clock; do what it does. Keep going.",
+    author: "Sam Levenson"
+},
+{
+    quote: "If you're not making mistakes, then you're not making decisions.",
+    author: "Catherine Cook"
+},
+{
+    quote: "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+    author: "Albert Schweitzer"
+},
+{
+    quote: "The only limit to our realization of tomorrow will be our doubts of today.",
+    author: "Franklin D. Roosevelt"
+},
+{
+    quote: "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+    author: "Albert Einstein"
+},
+{
+    quote: "Don't let yesterday take up too much of today.",
+    author: "Will Rogers"
+},
+{
+    quote: "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.",
+    author: "Christian D. Larson"
+},
+{
+    quote: "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.",
+    author: "Winston Churchill"
+},
+{
+    quote: "If you can't explain it simply, you don't understand it well enough.",
+    author: "Albert Einstein"
+},
+{
+    quote: "The best way to find yourself is to lose yourself in the service of others.",
+    author: "Mahatma Gandhi"
+},
+{
+    quote: "I have not failed. I've just found 10,000 ways that won't work.",
+    author: "Thomas Edison"
+},
+{
+    quote: "The biggest risk is not taking any risk... In a world that's changing really quickly, the only strategy that is guaranteed to fail is not taking risks.",
+    author: "Mark Zuckerberg"
+},
+{
+    quote: "Success is not how high you have climbed, but how you make a positive difference to the world.",
+    author: "Roy T. Bennett"
+},
+{
+    quote: "It does not matter how slowly you go as long as you do not stop.",
+    author: "Confucius"
+},
+{
+    quote: "You can't build a reputation on what you are going to do.",
+    author: "Henry Ford"
+},
+{
+    quote: "Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got this.",
+    author: "Chantal Sutherland"
+},
+{
+quote: "The man who has confidence in himself gains the confidence of others.",
+author: "Hasidic Proverb"
+},
+{
+quote: "If you want to lift yourself up, lift up someone else.",
+author: "Booker T. Washington"
+},
+{
+quote: "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.",
+author: "Jimmy Dean"
+},
+{
+quote: "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds.",
+author: "Orison Swett Marden"
+},
+{
+quote: "Your only limit is the amount of action you take.",
+author: "Chris Jericho"
+},
+{
+quote: "The only thing necessary for the triumph of evil is for good men to do nothing.",
+author: "Edmund Burke"
+},
+{
+quote: "Success is walking from failure to failure with no loss of enthusiasm.",
+author: "Winston Churchill"
+},
+{
+quote: "A dream doesn't become reality through magic; it takes sweat, determination and hard work.",
+author: "Colin Powell"
+},
+{
+quote: "I have learned over the years that when one's mind is made up, this diminishes fear.",
+author: "Rosa Parks"
+},
+{
+quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+author: "Nelson Mandela"
+},
+{
+quote: "Challenges are what make life interesting and overcoming them is what makes life meaningful.",
+author: "Joshua J. Marine"
+},
+{
+quote: "You don't have to be great to start, but you have to start to be great.",
+author: "Zig Ziglar"
+},
+{
+quote: "Success is not about being a winner, it's about being willing to lose.",
+author: "Anonymous"
+},
+{
+quote: "The true test of leadership is how well you function in a crisis.",
+author: "Brian Tracy"
+},
+{
+quote: "The greatest discovery of all time is that a person can change his future by merely changing his attitude.",
+author: "Oprah Winfrey"
+},
+{
+quote: "Strive not to be a success, but rather to be of value.",
+author: "Albert Einstein"
+},
+{
+quote: "I am not a product of my circumstances. I am a product of my decisions.",
+author: "Stephen Covey"
+},
+{
+quote: "The successful warrior is the average man, with laser-like focus.",
+author: "Bruce Lee"
+},
+{
+quote: "The best revenge is massive success.",
+author: "Frank Sinatra"
+},
+{
+quote: "There are two types of people in this world: those who make things happen and those who watch things happen.",
+author: "Robert Kiyosaki"
+},
+{
+quote: "If you can dream it, you can achieve it.",
+author: "Zig Ziglar"
+},
+{
+quote: "It always seems impossible until it's done.",
+author: "Nelson Mandela"
+},
+{
+quote: "Success is not how far you got, but the distance you traveled from where you started.",
+author: "Steve Prefontaine"
+},
+{
+quote: "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
+author: "Oprah Winfrey"
+}
+];
+
+const generateBtn = document.getElementById('generate-btn');
+const thoughtContainer = document.querySelector('.thought-container');
+const thought = document.getElementById('thought');
+const author = document.getElementById('author');
+
+generateBtn.addEventListener('click', () => {
+  const randomIndex = Math.floor(Math.random() * thoughts.length);
+  const randomThought = thoughts[randomIndex];
+  thought.innerText = randomThought.quote;
+  author.innerText = `- ${randomThought.author}`;
+  thoughtContainer.style.display = 'block';
+});
+
+    </script>
+  </body>
+</html>
