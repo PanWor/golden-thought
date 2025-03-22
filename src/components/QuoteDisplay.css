@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Oswald:wght@200..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+/* Quote container styles */
+.quote-container {
+  background-color: var(--primary-bg);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quote-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Quote content styles */
+blockquote {
+  position: relative;
+  padding: 10px 0 10px 0;
+}
+
+.quote-content {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-content::before {
+  content: '”';
+  font-family: 'PT Sans', serif; /* Elegant serif font with beautiful quotation marks */
+  font-size: 4.5rem;
+  color: var(--accent-color);
+  opacity: 0.2;
+  position: absolute;
+  top: -30px;
+  left: -22px;
+  z-index: -1;
+}
+
+.quote-author {
+  font-style: italic;
+  color: var(--secondary-text);
+  text-align: right;
+  font-size: 1.1rem;
+}
+
+/* Quote tags styles */
+.quote-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.tag {
+  background-color: var(--tag-bg);
+  color: var(--secondary-text);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+/* Loading state styles */
+.quote-container.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
