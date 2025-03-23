@@ -38,7 +38,7 @@ const fetchAndCacheTags = async () => {
     
     // Fetch fresh tags if cache is invalid or missing
     console.log('Fetching fresh tags')
-    const response = await fetch('https://api.quotable.io/tags')
+    const response = await fetch('https://quotable.vercel.app/tags')
     const tagsData = await response.json()
     
     // Extract tag names and update AVAILABLE_TAGS
@@ -75,8 +75,8 @@ function App() {
     
     try {
       const url = selectedTag
-        ? `https://api.quotable.io/quotes/random?tags=${selectedTag}`
-        : 'https://api.quotable.io/quotes/random'
+        ? `https://quotable.vercel.app/quotes/random?tags=${selectedTag}`
+        : 'https://quotable.vercel.app/quotes/random'
       
       const response = await fetch(url)
       
@@ -133,7 +133,7 @@ function App() {
       </main>
       
       <footer>
-        <p>Powered by <a href="https://api.quotable.io" target="_blank" rel="noopener noreferrer">Quotable API</a> | Made by <a href="https://github.com/PanWor" target="_blank" rel="noopener noreferrer">PanWor</a></p>
+        <p>Powered by <a href="https://quotable.vercel.app" target="_blank" rel="noopener noreferrer">Quotable API</a> | Made by <a href="https://github.com/PanWor" target="_blank" rel="noopener noreferrer">PanWor</a></p>
       </footer>
     </div>
   )
